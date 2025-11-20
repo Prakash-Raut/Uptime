@@ -1,0 +1,24 @@
+{
+	"name": "worker-notify",
+	"main": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"build": "tsdown",
+		"check-types": "tsc -b",
+		"compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
+		"dev": "bun run --hot src/index.ts",
+		"start": "bun run dist/index.js"
+	},
+	"dependencies": {
+		"@uptime/auth": "workspace:*",
+		"@uptime/db": "workspace:*",
+		"@uptime/redis-client": "workspace:*",
+		"bullmq": "^5.63.0",
+		"dotenv": "catalog:"
+	},
+	"devDependencies": {
+		"typescript": "catalog:",
+		"@types/bun": "^1.2.6",
+		"tsdown": "catalog:"
+	}
+}
