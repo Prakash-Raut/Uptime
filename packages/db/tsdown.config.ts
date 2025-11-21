@@ -1,7 +1,11 @@
 import { defineConfig } from "tsdown";
 
-export default defineConfig({
-	entry: "src/**/*.ts",
+const config = defineConfig({
+	entry: "src/index.ts",
 	sourcemap: true,
-	dts: true,
+	dts: false,
+	format: ["esm"],
+	external: ["@prisma/client", "@prisma/adapter-pg", "pg"],
 });
+
+export default config as Record<string, unknown>;
