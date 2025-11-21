@@ -125,8 +125,8 @@ export const StatusPageItem = ({ statusPage }: { statusPage: StatusPage }) => {
 					<LayoutPanelTopIcon className="size-5 text-muted-foreground" />
 				</div>
 			}
-		// onRemove={...} // Uncomment and implement if delete is added
-		// isRemoving={...}
+			// onRemove={...} // Uncomment and implement if delete is added
+			// isRemoving={...}
 		/>
 	);
 };

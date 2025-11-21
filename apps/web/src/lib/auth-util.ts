@@ -29,4 +29,3 @@ export const getUser = async () => {
 	const { user } = await requireAuth();
 	return user;
 };
-

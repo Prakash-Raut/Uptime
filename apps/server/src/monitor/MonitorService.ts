@@ -1,9 +1,13 @@
 import db from "@uptime/db";
 import type { MonitorStatus } from "node_modules/@uptime/db/prisma/generated/enums";
+import type { MonitorModel } from "node_modules/@uptime/db/prisma/generated/models";
 import type { MonitorCreateInput, MonitorUpdateInput } from "./monitor-schema";
 
 export class MonitorService {
-	public async createMonitor(userId: string, monitor: MonitorCreateInput) {
+	public async createMonitor(
+		userId: string,
+		monitor: MonitorCreateInput,
+	): Promise<MonitorModel> {
 		return await db.monitor.create({
 			data: {
 				...monitor,
@@ -17,7 +21,7 @@ export class MonitorService {
 		page: number,
 		pageSize: number,
 		search: string,
-	) {
+	): Promise<MonitorModel[]> {
 		return await db.monitor.findMany({
 			skip: (page - 1) * pageSize,
 			take: pageSize,
@@ -38,16 +42,19 @@ export class MonitorService {
 		userId: string,
 		id: string,
 		monitor: MonitorUpdateInput,
-	) {
+	): Promise<MonitorModel> {
 		return await db.monitor.update({
 			where: { id, userId: userId },
 			data: monitor,
 		});
 	}
 
-	public async deleteMonitor(userId: string, id: string) {
+	public async deleteMonitor(userId: string, id: string): Promise<string> {
 		return await db.monitor.delete({
 			where: { id, userId: userId },
+			select: {
+				id: true,
+			},
 		});
 	}
 

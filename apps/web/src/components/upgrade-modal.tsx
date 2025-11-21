@@ -32,11 +32,7 @@ export const UpgradeModel = ({ open, onOpenChange }: Props) => {
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel>Cancel</AlertDialogCancel>
-					<AlertDialogAction
-						onClick={() => {}}
-					>
-						Upgrade Now
-					</AlertDialogAction>
+					<AlertDialogAction onClick={() => {}}>Upgrade Now</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>

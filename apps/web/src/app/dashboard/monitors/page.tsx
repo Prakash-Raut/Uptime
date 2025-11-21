@@ -1,6 +1,6 @@
 import {
 	MonitorContainer,
-	MonitorList
+	MonitorList,
 } from "@/features/monitors/component/monitor";
 import { requireAuth } from "@/lib/auth-util";
 import { Suspense } from "react";
