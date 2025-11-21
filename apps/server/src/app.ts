@@ -26,7 +26,7 @@ export const createExpressServer = () => {
 		.use(express.json())
 		.use(loggerMiddleware)
 		.get("/", (_req, res) => {
-			res.status(200).send("OK");
+			res.send("Hello World");
 		})
 		.get("/error", () => {
 			throw new Error("Test error");
