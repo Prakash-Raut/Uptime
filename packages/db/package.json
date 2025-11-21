@@ -3,17 +3,13 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./src/index.ts"
-		},
-		"./*": {
-			"types": "./dist/*.d.ts",
-			"default": "./src/*.ts"
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
 		}
 	},
 	"scripts": {
 		"prebuild": "prisma generate",
-		"build": "tsdown",
+		"build": "echo 'no build needed'",
 		"db:push": "prisma db push",
 		"db:studio": "prisma studio",
 		"db:generate": "prisma generate",
@@ -26,8 +22,7 @@
 	},
 	"devDependencies": {
 		"@types/pg": "^8.15.6",
-		"prisma": "^7.0.0",
-		"tsdown": "catalog:"
+		"prisma": "^7.0.0"
 	},
 	"dependencies": {
 		"@prisma/client": "catalog:",

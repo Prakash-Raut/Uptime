@@ -174,7 +174,6 @@
       "devDependencies": {
         "@types/pg": "^8.15.6",
         "prisma": "^7.0.0",
-        "tsdown": "catalog:",
       },
       "peerDependencies": {
         "typescript": "^5",
