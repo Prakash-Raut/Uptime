@@ -27,6 +27,9 @@ export const createExpressServer = () => {
 		.get("/", (_req, res) => {
 			res.send("Hello World");
 		})
+		.get("/health", (_req, res) => {
+			res.send("OK");
+		})
 		.get("/error", () => {
 			throw new Error("Test error");
 		})
