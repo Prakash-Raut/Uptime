@@ -1,26 +1,18 @@
 {
 	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": [".env"],
 	"ui": "tui",
-	"envMode": "strict",
-	"globalEnv": [
-		"NODE_ENV",
-		"DATABASE_URL",
-		"REDIS_URL",
-		"BETTER_AUTH_SECRET",
-		"BETTER_AUTH_URL",
-		"POLAR_ACCESS_TOKEN",
-		"POLAR_SUCCESS_URL",
-		"CORS_ORIGIN",
-		"GOOGLE_CLIENT_ID",
-		"GOOGLE_CLIENT_SECRET"
-	],
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
 			"env": ["DATABASE_URL"],
-			"outputs": ["dist/**"]
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": [
+				"build/**",
+				".vercel/**",
+				"dist/**",
+				".next/**",
+				"!.next/cache/**"
+			]
 		},
 		"lint": {
 			"dependsOn": ["^lint"]
@@ -32,30 +24,37 @@
 			"cache": false,
 			"persistent": true
 		},
-		"generate": {
-			"dependsOn": ["^generate"],
-			"env": ["DATABASE_URL"],
-			"cache": false
-		},
-		"db:migrate:dev": {
-			"env": ["DATABASE_URL"],
-			"inputs": ["packages/db"],
-			"persistent": true
-		},
-		"db:migrate:deploy": {
-			"cache": false,
-			"env": ["DATABASE_URL"],
-			"inputs": ["packages/db"]
-		},
 		"db:push": {
 			"cache": false,
-			"env": ["DATABASE_URL"],
-			"inputs": ["packages/db"]
+			"persistent": true
 		},
-		"db:seed": {
+		"db:studio": {
 			"cache": false,
-			"env": ["DATABASE_URL"],
-			"inputs": ["packages/db"]
+			"persistent": true
+		},
+		"db:migrate": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:generate": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:start": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:stop": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:watch": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:down": {
+			"cache": false,
+			"persistent": true
 		}
 	}
 }

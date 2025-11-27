@@ -8,8 +8,8 @@ import { globalErrorHandler } from "./middlewares/globalErrorHandler";
 import { loggerMiddleware } from "./middlewares/logger";
 import { v1Router } from "./routes/v1";
 
-export const createExpressServer = () => {
-	const app: Express = express();
+export const createExpressServer = (): Express => {
+	const app = express();
 
 	app
 		.disable("x-powered-by")
@@ -25,7 +25,7 @@ export const createExpressServer = () => {
 		.use(express.json())
 		.use(loggerMiddleware)
 		.get("/", (_req, res) => {
-			res.send("Hello World");
+			res.send("Uptime");
 		})
 		.get("/health", (_req, res) => {
 			res.send("OK");

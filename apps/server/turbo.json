@@ -1,0 +1,20 @@
+{
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"env": [
+				"PORT",
+				"DATABASE_URL",
+				"REDIS_URL",
+				"BETTER_AUTH_SECRET",
+				"BETTER_AUTH_URL",
+				"POLAR_ACCESS_TOKEN",
+				"POLAR_SUCCESS_URL",
+				"CORS_ORIGIN",
+				"GOOGLE_CLIENT_ID",
+				"GOOGLE_CLIENT_SECRET"
+			],
+			"outputs": ["dist/**"]
+		}
+	}
+}
