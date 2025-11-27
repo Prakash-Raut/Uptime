@@ -1,12 +1,12 @@
+import { globalErrorHandler } from "@/middlewares/globalErrorHandler";
+import { loggerMiddleware } from "@/middlewares/logger";
+import { v1Router } from "@/routes/v1";
 import { auth } from "@uptime/auth";
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import "dotenv/config";
 import type { Express } from "express";
 import express from "express";
-import { globalErrorHandler } from "./middlewares/globalErrorHandler";
-import { loggerMiddleware } from "./middlewares/logger";
-import { v1Router } from "./routes/v1";
 
 export const createExpressServer = (): Express => {
 	const app = express();
