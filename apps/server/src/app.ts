@@ -15,7 +15,7 @@ export const createExpressServer = (): Express => {
 		.disable("x-powered-by")
 		.use(
 			cors({
-				origin: process.env.CORS_ORIGIN || "",
+				origin: "*", // for testing purposes
 				methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
 				allowedHeaders: ["Content-Type", "Authorization"],
 				credentials: true,
