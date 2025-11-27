@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios api client
 export const api = axios.create({
-	baseURL: "http://localhost:3000/api/v1",
+	baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`,
 	withCredentials: true,
 	headers: {
 		"Content-Type": "application/json",

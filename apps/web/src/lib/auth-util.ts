@@ -7,6 +7,7 @@ export const requireAuth = async () => {
 		fetchOptions: {
 			headers: await headers(),
 			throw: true,
+			credentials: "include",
 		},
 	});
 
