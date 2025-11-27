@@ -13,27 +13,48 @@ export const createExpressServer = (): Express => {
 
 	app
 		.disable("x-powered-by")
+
+		// cors middleware
 		.use(
 			cors({
 				origin: "*", // for testing purposes
 				methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
-				allowedHeaders: ["Content-Type", "Authorization"],
+				allowedHeaders: [
+					"Content-Type",
+					"Authorization",
+					"Access-Control-Allow-Origin",
+				],
 				credentials: true,
 			}),
 		)
-		.all("/api/auth{/*path}", toNodeHandler(auth))
+
+		// better auth handler
+		.all("/api/auth/*splat", toNodeHandler(auth)) //  For ExpressJS v5
+
+		// Mount express json middleware after Better Auth handler
+		// or only apply it to routes that don't interact with Better Auth
 		.use(express.json())
+
+		// logger middleware
 		.use(loggerMiddleware)
+
+		// health check routes
 		.get("/", (_req, res) => {
 			res.send("Uptime");
 		})
 		.get("/health", (_req, res) => {
 			res.send("OK");
 		})
+
+		// error test route
 		.get("/error", () => {
 			throw new Error("Test error");
 		})
+
+		// v1 router
 		.use("/api/v1", v1Router)
+
+		// global error handler
 		.use(globalErrorHandler);
 
 	return app;
