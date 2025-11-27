@@ -1,6 +1,6 @@
-import { server } from "@/index";
+import server from "@/index";
 import { faker } from "@faker-js/faker";
-import db from "@/config/db";
+import db from "@uptime/db";
 import { afterAll, beforeAll, describe, expect, it } from "bun:test";
 import request from "supertest";
 

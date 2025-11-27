@@ -2,7 +2,7 @@ import { globalErrorHandler } from "@/middlewares/globalErrorHandler";
 import { loggerMiddleware } from "@/middlewares/logger";
 import { v1Router } from "@/routes/v1";
 import { auth } from "@uptime/auth";
-import { toNodeHandler } from "better-auth/node";
+import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import "dotenv/config";
 import type { Express } from "express";
@@ -53,6 +53,13 @@ export const createExpressServer = (): Express => {
 
 		// v1 router
 		.use("/api/v1", v1Router)
+
+		.get("/api/me", async (req, res) => {
+			const session = await auth.api.getSession({
+				headers: fromNodeHeaders(req.headers),
+			});
+			return res.json(session);
+		})
 
 		// global error handler
 		.use(globalErrorHandler);
