@@ -35,6 +35,7 @@ export const createExpressServer = (): Express => {
 		// or only apply it to routes that don't interact with Better Auth
 		.use(express.json())
 
+		.use(express.urlencoded({ extended: true }))
 		// logger middleware
 		.use(loggerMiddleware)
 
