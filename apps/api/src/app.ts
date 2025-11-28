@@ -17,7 +17,7 @@ export const createExpressServer = (): Express => {
 		// cors middleware
 		.use(
 			cors({
-				origin: "*", // for testing purposes
+				origin: process.env.CORS_ORIGIN,
 				methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
 				allowedHeaders: [
 					"Content-Type",
