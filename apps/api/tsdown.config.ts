@@ -1,11 +1,11 @@
-import { defineConfig, type UserConfig } from "tsdown";
+// import { defineConfig, type UserConfig } from "tsdown";
 
-const config: UserConfig = defineConfig({
-	entry: "index.ts",
-	format: "esm",
-	outDir: "./dist",
-	clean: true,
-	noExternal: [/@uptime\/.*/],
-});
+// const config: UserConfig = defineConfig({
+// 	entry: "src/app.ts",
+// 	format: "esm",
+// 	outDir: "./dist",
+// 	clean: true,
+// 	noExternal: [/@uptime\/.*/],
+// });
 
-export default config;
+// export default config;

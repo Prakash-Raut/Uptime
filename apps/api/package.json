@@ -1,12 +1,12 @@
 {
 	"name": "@uptime/api",
-	"main": "src/index.ts",
+	"main": "src/app.ts",
 	"type": "module",
 	"scripts": {
-		"test": "bun test",
-		"dev": "bun run --hot index.ts",
-		"start": "bun src/index.ts",
-		"format": "biome format --write ."
+		"dev": "bun run --hot src/app.ts",
+		"start": "bun run src/app.ts",
+		"format": "biome format --write .",
+		"test": "bun test"
 	},
 	"dependencies": {
 		"@faker-js/faker": "^10.1.0",

@@ -8,63 +8,60 @@ import "dotenv/config";
 import type { Express } from "express";
 import express from "express";
 
-export const createExpressServer = (): Express => {
-	const app = express();
+const app: Express = express();
 
-	app
-		.disable("x-powered-by")
+app
+	.disable("x-powered-by")
 
-		// cors middleware
-		.use(
-			cors({
-				origin: process.env.CORS_ORIGIN,
-				methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
-				allowedHeaders: [
-					"Content-Type",
-					"Authorization",
-					"Access-Control-Allow-Origin",
-				],
-				credentials: true,
-			}),
-		)
+	.use(
+		cors({
+			origin: process.env.CORS_ORIGIN,
+			methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
+			allowedHeaders: [
+				"Content-Type",
+				"Authorization",
+				"Access-Control-Allow-Origin",
+			],
+			credentials: true,
+		}),
+	)
 
-		// better auth handler
-		.all("/api/auth/*splat", toNodeHandler(auth)) //  For ExpressJS v5
+	// better auth handler
+	.all("/api/auth/*splat", toNodeHandler(auth)) //  For ExpressJS v5
 
-		// Mount express json middleware after Better Auth handler
-		// or only apply it to routes that don't interact with Better Auth
-		.use(express.json())
+	// Mount express json middleware after Better Auth handler
+	// or only apply it to routes that don't interact with Better Auth
+	.use(express.json())
 
-		.use(express.urlencoded({ extended: true }))
-		// logger middleware
-		.use(loggerMiddleware)
+	.use(express.urlencoded({ extended: true }))
 
-		.get("/", (_req, res) => {
-			res.send("Uptime API");
-		})
+	.use(loggerMiddleware)
 
-		// health check
-		.get("/health", (_req, res) => {
-			res.send("OK");
-		})
+	.get("/", (_req, res) => {
+		res.send("Uptime API");
+	})
 
-		// error test route
-		.get("/error", () => {
-			throw new Error("Test error");
-		})
+	.get("/health", (_req, res) => {
+		res.send("OK");
+	})
 
-		// v1 router
-		.use("/api/v1", v1Router)
+	.get("/error", () => {
+		throw new Error("Test error");
+	})
 
-		.get("/api/me", async (req, res) => {
-			const session = await auth.api.getSession({
-				headers: fromNodeHeaders(req.headers),
-			});
-			return res.json(session);
-		})
+	.use("/api/v1", v1Router)
 
-		// global error handler
-		.use(globalErrorHandler);
+	.get("/api/me", async (req, res) => {
+		const session = await auth.api.getSession({
+			headers: fromNodeHeaders(req.headers),
+		});
+		return res.json(session);
+	})
 
-	return app;
-};
+	.use(globalErrorHandler)
+
+	.listen(process.env.PORT, () => {
+		console.log(`API is live on {http://localhost:${process.env.PORT}}`);
+	});
+
+export default app;
