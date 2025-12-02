@@ -58,12 +58,6 @@ app
 		return res.json(session);
 	})
 
-	.use(globalErrorHandler)
-
-	.listen(process.env.PORT || 3000, () => {
-		console.log(
-			`API is live on {http://localhost:${process.env.PORT || 3000}}`,
-		);
-	});
+	.use(globalErrorHandler);
 
 export default app;
