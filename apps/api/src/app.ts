@@ -60,8 +60,10 @@ app
 
 	.use(globalErrorHandler)
 
-	.listen(process.env.PORT, () => {
-		console.log(`API is live on {http://localhost:${process.env.PORT}}`);
+	.listen(process.env.PORT || 3000, () => {
+		console.log(
+			`API is live on {http://localhost:${process.env.PORT || 3000}}`,
+		);
 	});
 
 export default app;
