@@ -1,3 +1,4 @@
+import server from "@/app";
 import { faker } from "@faker-js/faker";
 import db from "@uptime/db";
 import {
@@ -9,7 +10,6 @@ import {
 	expect,
 	it,
 } from "bun:test";
-import server from "index";
 import request from "supertest";
 
 describe("Monitor API", () => {
