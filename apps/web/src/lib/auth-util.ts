@@ -1,16 +1,19 @@
+import { auth } from "@uptime/auth";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { authClient } from "./auth-client";
 
 export const requireAuth = async () => {
-	const session = await authClient.getSession();
+	const session = await auth.api.getSession({
+		headers: await headers(),
+	});
 
-	if (!session || !session.data?.session || !session.data?.user) {
+	if (!session || !session.session || !session.user) {
 		redirect("/login");
 	}
 
 	return {
-		session: session.data?.session,
-		user: session.data?.user,
+		session: session.session,
+		user: session.user,
 	};
 };
 
