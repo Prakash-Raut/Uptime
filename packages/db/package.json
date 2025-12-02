@@ -5,10 +5,12 @@
 		".": "./src/index.ts"
 	},
 	"scripts": {
+		"build": "prisma generate",
 		"db:migrate:deploy": "prisma migrate deploy",
 		"db:migrate:dev": "prisma migrate dev",
 		"db:push": "prisma db push",
 		"db:seed": "prisma db seed",
+		"db:generate": "prisma generate",
 		"dev": "tsup src/* --format esm --watch",
 		"format": "prisma format",
 		"generate": "prisma generate",
