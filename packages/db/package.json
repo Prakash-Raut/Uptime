@@ -11,15 +11,12 @@
 		"db:push": "prisma db push",
 		"db:seed": "prisma db seed",
 		"db:generate": "prisma generate",
-		"dev": "tsup src/* --format esm --watch",
-		"format": "prisma format",
-		"generate": "prisma generate",
-		"studio": "prisma studio"
+		"db:studio": "prisma studio",
+		"db:format": "prisma format"
 	},
 	"devDependencies": {
 		"@types/pg": "^8.15.6",
-		"prisma": "^7.0.0",
-		"tsup": "^8.5.1"
+		"prisma": "^7.0.0"
 	},
 	"dependencies": {
 		"@prisma/client": "catalog:",

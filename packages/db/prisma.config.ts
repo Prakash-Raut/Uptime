@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Load environment variables from server .env file
 dotenv.config({
-	path: path.join(__dirname, ".env"),
+	path: path.join(__dirname, "../../.env"),
 });
 
 export default defineConfig({

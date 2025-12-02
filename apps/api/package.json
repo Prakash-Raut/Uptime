@@ -3,8 +3,9 @@
 	"main": "src/app.ts",
 	"type": "module",
 	"scripts": {
+		"build": "tsc",
 		"dev": "bun run --hot src/index.ts",
-		"start": "bun run src/index.ts",
+		"start": "bun run dist/index.js",
 		"format": "biome format --write .",
 		"test": "bun test"
 	},
