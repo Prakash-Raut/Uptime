@@ -4,6 +4,8 @@
 		"target": "ESNext",
 		"skipLibCheck": true,
 		"composite": true,
+		"outDir": "dist",
+		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
